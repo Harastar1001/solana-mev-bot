@@ -1,0 +1,1 @@
+pub static PROJECT_NAME: &str = "sandooo";
