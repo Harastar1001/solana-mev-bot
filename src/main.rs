@@ -5,8 +5,10 @@ use common::utils::{
   get_confirmed_signatures_for_address,
   get_transaction_details,
   parse_transaction,
-  logs_subscribe
+  logs_subscribe,
+  run
 };
+use solana_sdk::commitment_config::{ CommitmentConfig };
 
 #[tokio::main]
 async fn main() {
@@ -22,9 +24,11 @@ async fn main() {
 //     Ok(response) => println!("transation details: {:?}", parse_transaction(response.get("result"))),
 //     Err(e) => eprintln!("Error: {}", e),
 //   }
-  let ws_url = "wss://api.mainnet-beta.solana.com/ws";
-//   let ws_url = "https://api.mainnet-beta.solana.com";
-  let account_address = "So11111111111111111111111111111111111111112";
-  let commitment = "confirmed"; 
-  logs_subscribe(ws_url, account_address, commitment).await;
+//   let ws_url = "wss://api.devnet.solana.com";
+// //   let ws_url = "https://api.mainnet-beta.solana.com";
+//   let account_address = "So11111111111111111111111111111111111111112";
+//   let commitment = CommitmentConfig::confirmed(); 
+//   let subscribe = logs_subscribe(ws_url, account_address, commitment).await.unwrap();
+//   subscribe
+  run().await;
 }
